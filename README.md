@@ -4,6 +4,30 @@
 
 FATHER — учебно-инженерный прототип метасистемы для анализа идей, проектирования, оценки, создания, тестирования и сопровождения AI-агентов. Текущая версия строится как единое ядро с Web- и Telegram-интерфейсами.
 
+## Навигация по проекту
+
+FATHER ведётся как иерархическая инженерная система: **каждый функциональный блок имеет собственный `README.md`, а родительские README содержат ссылки на дочерние блоки**.
+
+- [Документация — карта разделов](docs/README.md)
+  - [03 — Architecture](docs/03_Architecture/README.md)
+  - [09 — Architecture Decisions / ADR](docs/09_Decisions/README.md)
+- [90 — Innovation Registry](90_Innovation_Registry/README.md)
+  - [Главный реестр идей](90_Innovation_Registry/Registry.md)
+  - [FTR-0009 — Olympiad Mentor](90_Innovation_Registry/FTR-0009-Olympiad-Mentor.md)
+  - [FTR-0010 — Personal Cognitive Mentor](90_Innovation_Registry/FTR-0010-Personal-Cognitive-Mentor.md)
+
+### Правило сопровождения README
+
+При создании нового крупного блока FATHER должен одновременно:
+
+1. создать локальный `README.md`;
+2. описать назначение, границы, входы/выходы, статус и следующие шаги;
+3. добавить ссылку в README родительского раздела;
+4. при необходимости добавить ссылку в этот главный README;
+5. не оставлять документы без навигации.
+
+Это считается частью поведения будущего агента FATHER, а не ручной косметикой репозитория.
+
 ## Главная идея
 
 FATHER не является одним универсальным чат-ботом. Это производственный контур, который:
@@ -26,6 +50,7 @@ FATHER не является одним универсальным чат-бот
 - **Minimum Sufficient Architecture** — архитектура должна быть достаточной требованиям, а не максимально сложной.
 - **Human Decision Gates** — критические бизнес-, архитектурные и security-решения утверждаются человеком.
 - **Plan → Fact → Learning** — каждый проект пополняет инженерную память.
+- **Every Project Must Leave an Asset** — каждый проект, исследование или даже отклонённая идея должны оставить повторно используемый интеллектуальный актив.
 - **Provider Independence** — LLM и внешние сервисы подключаются через адаптеры; ключи и секреты не хардкодятся.
 
 ## Режимы глубины
@@ -61,7 +86,13 @@ Knowledge Base
 
 Контур объединяет Analogous, Parametric, Bottom-Up, PERT, Risk Register, WBS, TCO и накопленную статистику собственных проектов.
 
-Подробнее: [`docs/03_Architecture/FATHER_DELIVERY_INTELLIGENCE.md`](docs/03_Architecture/FATHER_DELIVERY_INTELLIGENCE.md)
+Подробнее: [FATHER Delivery Intelligence](docs/03_Architecture/FATHER_DELIVERY_INTELLIGENCE.md)
+
+## Innovation Registry
+
+FATHER сохраняет не только код и документацию, но и продуктовые идеи, исследования и гипотезы. Для этого ведётся отдельный [Innovation Registry](90_Innovation_Registry/README.md) с уровнями зрелости `IRL-0…IRL-9`.
+
+Исследование не списывается как потеря только потому, что заказчик отказался от реализации. Оно должно быть сохранено, переоценено и при возможности превращено в следующий продукт, паттерн, компонент или обучающий материал для FATHER.
 
 ## Текущий PoC
 
