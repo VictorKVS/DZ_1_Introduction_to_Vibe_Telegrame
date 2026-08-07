@@ -14,6 +14,8 @@ FATHER ведётся как иерархическая инженерная с�
     - [GitHub Pages / Engineering Portal Plan](docs/00_Project_Management/GITHUB_PAGES_PLAN.md)
   - [03 — Architecture](docs/03_Architecture/README.md)
   - [09 — Architecture Decisions / ADR](docs/09_Decisions/README.md)
+  - [20 — Legacy Intelligence](docs/20_Legacy_Intelligence/README.md)
+    - [LEGACY-001 — Previous Generation Portfolio Analysis](docs/20_Legacy_Intelligence/LEGACY-001-Previous-Generation-Portfolio-Analysis.md)
 - [90 — Innovation Registry](90_Innovation_Registry/README.md)
   - [Главный реестр идей](90_Innovation_Registry/Registry.md)
   - [FTR-0009 — Olympiad Mentor](90_Innovation_Registry/FTR-0009-Olympiad-Mentor.md)
@@ -107,6 +109,14 @@ Knowledge Base
 Контур объединяет Analogous, Parametric, Bottom-Up, PERT, Risk Register, WBS, TCO и накопленную статистику собственных проектов.
 
 Подробнее: [FATHER Delivery Intelligence](docs/03_Architecture/FATHER_DELIVERY_INTELLIGENCE.md)
+
+## Legacy Intelligence
+
+Предыдущие поколения проектов рассматриваются как источник проверяемых инженерных активов, а не как код для механического переноса. Для каждого legacy-проекта FATHER должен восстановить назначение и архитектуру, отделить реализованное от запланированного, провести security/quality review и принять решение `KEEP / ADAPT / REWRITE / DEFER / REJECT`.
+
+Первый исследовательский набор включает MindForge, Librarian-AI, UniversalAgent, Telegram-прототипы, AURORA, OSINT-проекты, SOCRATES, ENIGMA и другие связанные решения предыдущего поколения.
+
+Подробнее: [20 — Legacy Intelligence](docs/20_Legacy_Intelligence/README.md) и [LEGACY-001](docs/20_Legacy_Intelligence/LEGACY-001-Previous-Generation-Portfolio-Analysis.md).
 
 ## Innovation Registry
 
