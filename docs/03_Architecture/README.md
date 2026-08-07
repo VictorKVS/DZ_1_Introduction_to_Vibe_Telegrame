@@ -36,15 +36,20 @@ Lessons Learned
 - Architecture Baseline + Change Management.
 - План/факт и обучение на фактическом результате.
 - Goal → Problem → Decision → Implementation → Outcome traceability.
+- Knowledge Graph хранит причинно-связанную историю инженерной деятельности, а не только документы.
 
 ## Текущие документы
 
 - [FATHER Delivery Intelligence](FATHER_DELIVERY_INTELLIGENCE.md) — Project/Technology OSINT, Estimation Engine, Talent Intelligence, Staffing, Risk, TCO и Delivery Control.
 - [Engineering Knowledge Graph](ENGINEERING_KNOWLEDGE_GRAPH.md) — граф целей, проблем, доказательств, решений, кода, тестов, метрик, результатов и lessons learned.
+- [FATHER Meta Model v0.1](FATHER_META_MODEL.md) — типы узлов/связей, веса, жизненные циклы, трассировка до CodeArtifact и Goal Impact Model.
 - [ADR-002: Project Intelligence & Estimation Engine](../09_Decisions/ADR-002-Project-Intelligence-Estimation-Engine.md) — решение о выделении оценочного и разведывательного контура.
 
 ## Планируемые архитектурные блоки
 
+- FATHER Dictionary / Controlled Vocabulary.
+- Machine-readable Graph Schema.
+- Domain Model / Django Models.
 - Product Discovery & Expert Review Board.
 - Solution Research / GitHub Intelligence / Reengineering.
 - Knowledge Factory.
@@ -62,4 +67,4 @@ Lessons Learned
 
 ## Следующий шаг
 
-Зафиксировать FATHER Meta Model: словарь, онтологию, типы узлов/связей и минимальную PostgreSQL-модель для непрерывной трассы `Goal → Problem → Decision → Code → Test → Metric → Outcome`.
+Создать официальный словарь FATHER, машинно-читаемую схему узлов/связей и первый тестовый граф на реальном legacy-кейсе `Sokrat → SOCRATES`.
