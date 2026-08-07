@@ -37,17 +37,18 @@ Lessons Learned
 - План/факт и обучение на фактическом результате.
 - Goal → Problem → Decision → Implementation → Outcome traceability.
 - Knowledge Graph хранит причинно-связанную историю инженерной деятельности, а не только документы.
+- Controlled Vocabulary: один термин имеет одно официальное значение в системе.
 
 ## Текущие документы
 
 - [FATHER Delivery Intelligence](FATHER_DELIVERY_INTELLIGENCE.md) — Project/Technology OSINT, Estimation Engine, Talent Intelligence, Staffing, Risk, TCO и Delivery Control.
 - [Engineering Knowledge Graph](ENGINEERING_KNOWLEDGE_GRAPH.md) — граф целей, проблем, доказательств, решений, кода, тестов, метрик, результатов и lessons learned.
 - [FATHER Meta Model v0.1](FATHER_META_MODEL.md) — типы узлов/связей, веса, жизненные циклы, трассировка до CodeArtifact и Goal Impact Model.
+- [FATHER Dictionary v0.1](FATHER_DICTIONARY.md) — официальный контролируемый словарь терминов FATHER.
 - [ADR-002: Project Intelligence & Estimation Engine](../09_Decisions/ADR-002-Project-Intelligence-Estimation-Engine.md) — решение о выделении оценочного и разведывательного контура.
 
 ## Планируемые архитектурные блоки
 
-- FATHER Dictionary / Controlled Vocabulary.
 - Machine-readable Graph Schema.
 - Domain Model / Django Models.
 - Product Discovery & Expert Review Board.
@@ -67,4 +68,4 @@ Lessons Learned
 
 ## Следующий шаг
 
-Создать официальный словарь FATHER, машинно-читаемую схему узлов/связей и первый тестовый граф на реальном legacy-кейсе `Sokrat → SOCRATES`.
+Создать машинно-читаемую JSON Schema для узлов/связей и первый тестовый граф на реальном legacy-кейсе `Sokrat → SOCRATES`, затем перевести схему в Django Domain Model.
