@@ -27,6 +27,8 @@ README.md функционального блока
   - [GitHub Pages / Engineering Portal Plan](00_Project_Management/GITHUB_PAGES_PLAN.md)
 - [03 — Architecture](03_Architecture/README.md) — архитектура FATHER, производственные контуры, Delivery Intelligence, будущие архитектурные схемы.
 - [09 — Decisions](09_Decisions/README.md) — архитектурные решения ADR и история ключевых технических решений.
+- [20 — Legacy Intelligence](20_Legacy_Intelligence/README.md) — анализ предыдущих поколений проектов, извлечение capabilities, reusable assets, lessons learned и план миграции в FATHER.
+  - [LEGACY-001 — Previous Generation Portfolio Analysis](20_Legacy_Intelligence/LEGACY-001-Previous-Generation-Portfolio-Analysis.md)
 - [90 — Innovation Registry](../90_Innovation_Registry/README.md) — реестр идей, будущих продуктов и интеллектуальных активов.
 
 ## Стандарт README блока
@@ -67,4 +69,5 @@ Markdown в Git остаётся исходной инженерной доку�
 - → [00 — Project Management](00_Project_Management/README.md)
 - → [03 — Architecture](03_Architecture/README.md)
 - → [09 — Decisions](09_Decisions/README.md)
+- → [20 — Legacy Intelligence](20_Legacy_Intelligence/README.md)
 - → [90 — Innovation Registry](../90_Innovation_Registry/README.md)
