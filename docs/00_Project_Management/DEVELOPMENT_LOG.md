@@ -231,6 +231,53 @@ MVP считается успешным, если из одной входной
 
 ---
 
+# DEV-0006 — FATHER Meta Model и Engineering Knowledge Graph становятся фундаментом организационной памяти
+
+**Дата:** 2026-08-08  
+**Статус:** ACCEPTED / DOCUMENTED
+
+### Что изменили
+
+Зафиксировано, что словарь и документы сами по себе недостаточны. Организационная память FATHER должна хранить узлы, связи, доказательства, проблемы, решения, реализацию в коде, тесты, метрики, фактические результаты и lessons learned.
+
+### Решение
+
+Принята базовая смысловая цепочка:
+
+`Goal → Problem → Evidence → Alternative → Decision → Requirement → Architecture Component → Code Artifact → Test → Metric → Outcome → Lesson Learned`.
+
+Созданы:
+
+- `ENGINEERING_KNOWLEDGE_GRAPH.md`;
+- `FATHER_META_MODEL.md`;
+- `FATHER_DICTIONARY.md`.
+
+Для связей введены раздельные веса: confidence, evidence strength, relevance, freshness, goal impact, risk impact, reuse success. Один универсальный вес не используется.
+
+Для кода MVP хранит repository/path/symbol/commit/hash, а не копирует весь source code в граф. AST/Code Graph отложен до подтверждённой необходимости.
+
+### Почему
+
+Цель FATHER — научиться не только находить информацию, но и измерять, какие решения и изменения реально влияли на достижение целей, сроки, стоимость, качество и безопасность.
+
+### Альтернативы
+
+1. Хранить только Markdown/документы — отклонено как недостаточное для машинного анализа plan/fact и причинных связей.
+2. Сразу использовать Neo4j — отложено; для MVP достаточно PostgreSQL + graph tables + JSONB + pgvector.
+3. Хранить полный source code в knowledge graph — отложено; используется адресуемый CodeArtifact.
+
+### Проверка
+
+Meta Model считается практически подтверждённым, когда на одном legacy-кейсе `Sokrat → SOCRATES` можно восстановить цепь от исходной проблемы/способности через решение до новой архитектуры и связать её с исходным кодом/документами.
+
+### Связанные артефакты
+
+- `docs/03_Architecture/ENGINEERING_KNOWLEDGE_GRAPH.md`
+- `docs/03_Architecture/FATHER_META_MODEL.md`
+- `docs/03_Architecture/FATHER_DICTIONARY.md`
+
+---
+
 ## Следующая запись
 
-Каждый следующий архитектурный, продуктовый, ИБ или технологический шаг добавляется сюда **до или одновременно с реализацией**, а после проверки запись дополняется `result` и `lessons_learned`.
+Следующий архитектурный шаг: машинно-читаемая Graph Schema + первый реальный тестовый граф `Sokrat → SOCRATES`, затем Django Domain Model.
