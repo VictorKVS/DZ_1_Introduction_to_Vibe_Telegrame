@@ -19,10 +19,11 @@
 - [x] Machine-readable `GRAPH_SCHEMA_V0_1.json`
 - [x] Первый тестовый граф `Sokrat → SOCRATES`
 - [ ] Проверка JSON Schema автоматическим тестом
-- [ ] Domain Model v0.1
-- [ ] Decision Record Schema
-- [ ] Django Models v0.1
-- [ ] REST API Contract v0.1
+- [x] Domain Model v0.1
+- [x] Decision Record Schema
+- [x] Django Model Mapping v0.1
+- [x] REST API Contract v0.1
+- [ ] Django Models / migrations baseline
 
 **Правило галочки:** `[x]` ставится только при наличии артефакта в репозитории. Реализационные задачи дополнительно требуют тест/валидацию перед статусом `VALIDATED`.
 
@@ -100,9 +101,10 @@
 - [x] Graph JSON Schema;
 - [x] Legacy graph example;
 - [ ] автоматическая schema validation;
-- [ ] Domain Model;
-- [ ] Decision Record schema;
-- [ ] Django mapping.
+- [x] Domain Model;
+- [x] Decision Record schema;
+- [x] Django mapping;
+- [x] REST API Contract.
 
 Минимальные сущности:
 
@@ -450,19 +452,10 @@ MVP:
 
 ## Ближайшие 5 практических действий
 
-1. Проверить `GRAPH_SCHEMA_V0_1.json` автоматическим тестом на примере `Sokrat → SOCRATES`.
-2. Создать `DOMAIN_MODEL.md` и отображение сущностей на Django Models.
-3. Создать `DECISION_RECORD_SCHEMA.json` для SOCRATES-lite.
-4. Написать SRS/NFR первой вертикали FATHER.
-5. Поднять Django + PostgreSQL control plane и базовые сущности.
+1. Проверить `GRAPH_SCHEMA_V0_1.json` и `DECISION_RECORD_SCHEMA.json` автоматическими тестами.
+2. Написать SRS/NFR первой вертикали FATHER.
+3. Поднять Django skeleton и PostgreSQL baseline.
+4. Реализовать первый миграционный срез `Project → Goal → Source/Evidence → DecisionSession → Alternatives → ExpertReviews → Decision`.
+5. Создать integration test на полный REST trace.
 
-После этих пяти действий проект перейдёт от архитектурной концепции к проверяемому работающему ядру.
-
-## Навигация
-
-- ↑ [00 — Project Management](README.md)
-- ↔ [Development Log](DEVELOPMENT_LOG.md)
-- ↔ [Documentation Standard](DOCUMENTATION_STANDARD.md)
-- ↔ [Legacy Intelligence](../20_Legacy_Intelligence/README.md)
-- ↔ [Architecture](../03_Architecture/README.md)
-- ↔ [Decisions](../09_Decisions/README.md)
+После этих пяти действий проект перейдёт от проектирования доменной модели к проверяемому работающему ядру.
