@@ -48,12 +48,22 @@ Lessons Learned
 - [FATHER Information Architecture v0.1](FATHER_INFORMATION_ARCHITECTURE.md) — информационные домены, provenance, versioning, права изменения, retention и представления.
 - [Core Entity Catalog v0.1](CORE_ENTITY_CATALOG.md) — базовые сущности, их назначение и MVP Core Set.
 - [Relationship Catalog v0.1](RELATIONSHIP_CATALOG.md) — словарь инженерных связей, включая влияние и causal status.
+- [Domain Model v0.1](DOMAIN_MODEL.md) — предметная модель для первой реализации Control Plane.
+- [Decision Record Schema v0.1](DECISION_RECORD_SCHEMA.json) — машинно-читаемый контракт инженерного решения.
+- [Django Model Mapping v0.1](DJANGO_MODEL_MAPPING.md) — отображение доменной модели на apps/models модульного Django-монолита.
 - [ADR-002: Project Intelligence & Estimation Engine](../09_Decisions/ADR-002-Project-Intelligence-Estimation-Engine.md) — решение о выделении оценочного и разведывательного контура.
+
+## Машинно-читаемые артефакты
+
+- `GRAPH_SCHEMA_V0_1.json` — схема узлов и связей Engineering Knowledge Graph.
+- `DECISION_RECORD_SCHEMA.json` — структура Decision Record.
+- `../20_Legacy_Intelligence/SOKRAT_TO_SOCRATES_GRAPH_V0_1.json` — первый реальный тестовый граф наследования.
 
 ## Планируемые архитектурные блоки
 
-- Machine-readable Graph Schema.
-- Domain Model / Django Models.
+- Automated schema validation.
+- REST API Contract v0.1.
+- Django migrations baseline.
 - Product Discovery & Expert Review Board.
 - Solution Research / GitHub Intelligence / Reengineering.
 - Knowledge Factory.
@@ -65,10 +75,10 @@ Lessons Learned
 
 ## Статус
 
-`EARLY ARCHITECTURE / EVOLVING`
+`EARLY ARCHITECTURE / DOMAIN BASELINE FORMED`
 
 Архитектура развивается вместе с учебным PoC. Новые компоненты добавляются только после появления обоснованной функции или требования.
 
 ## Следующий шаг
 
-Создать машинно-читаемую `GRAPH_SCHEMA_V0_1.json` для узлов/связей и первый тестовый граф на реальном legacy-кейсе `Sokrat → SOCRATES`, затем перевести проверенную схему в `DOMAIN_MODEL.md` и Django Models.
+Проверить JSON Schema автоматически, зафиксировать `REST_API_CONTRACT_V0_1.md`, после чего создать первый Django skeleton и миграционный baseline для цепочки `Project → Goal → Source/Evidence → DecisionSession → Alternatives → ExpertReviews → Decision`.
