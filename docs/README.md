@@ -22,6 +22,9 @@ README.md функционального блока
 
 ## Разделы
 
+- [00 — Project Management](00_Project_Management/README.md) — стандарты ведения проекта, документации и будущего инженерного портала.
+  - [FATHER Documentation Standard](00_Project_Management/DOCUMENTATION_STANDARD.md)
+  - [GitHub Pages / Engineering Portal Plan](00_Project_Management/GITHUB_PAGES_PLAN.md)
 - [03 — Architecture](03_Architecture/README.md) — архитектура FATHER, производственные контуры, Delivery Intelligence, будущие архитектурные схемы.
 - [09 — Decisions](09_Decisions/README.md) — архитектурные решения ADR и история ключевых технических решений.
 - [90 — Innovation Registry](../90_Innovation_Registry/README.md) — реестр идей, будущих продуктов и интеллектуальных активов.
@@ -39,6 +42,8 @@ README.md функционального блока
 7. следующие шаги;
 8. ссылки вверх и вниз по дереву документации.
 
+Полное правило: [FATHER Documentation Standard](00_Project_Management/DOCUMENTATION_STANDARD.md).
+
 ## Принцип сопровождения агентом
 
 При создании нового каталога или крупного функционального блока FATHER должен автоматически:
@@ -47,4 +52,19 @@ README.md функционального блока
 - добавить ссылку на него в родительский `README.md`;
 - при необходимости добавить ссылку в главный `README.md`;
 - обновить статус блока;
-- не оставлять «осиротевшие» документы без навигации.
+- не оставлять «осиротевшие» документы без навигации;
+- проверять битые ссылки и пригодность документов к публикации.
+
+## Будущий портал
+
+Markdown в Git остаётся исходной инженерной документацией. На его основе планируется GitHub Pages / Engineering Portal, а затем тот же граф документов будет использоваться Django Control Plane и базой знаний FATHER.
+
+Подробнее: [GitHub Pages / Engineering Portal Plan](00_Project_Management/GITHUB_PAGES_PLAN.md).
+
+## Навигация
+
+- 🏠 [Главный README проекта](../README.md)
+- → [00 — Project Management](00_Project_Management/README.md)
+- → [03 — Architecture](03_Architecture/README.md)
+- → [09 — Decisions](09_Decisions/README.md)
+- → [90 — Innovation Registry](../90_Innovation_Registry/README.md)
