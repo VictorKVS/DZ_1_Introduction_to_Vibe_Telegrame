@@ -45,6 +45,9 @@ Lessons Learned
 - [Engineering Knowledge Graph](ENGINEERING_KNOWLEDGE_GRAPH.md) — граф целей, проблем, доказательств, решений, кода, тестов, метрик, результатов и lessons learned.
 - [FATHER Meta Model v0.1](FATHER_META_MODEL.md) — типы узлов/связей, веса, жизненные циклы, трассировка до CodeArtifact и Goal Impact Model.
 - [FATHER Dictionary v0.1](FATHER_DICTIONARY.md) — официальный контролируемый словарь терминов FATHER.
+- [FATHER Information Architecture v0.1](FATHER_INFORMATION_ARCHITECTURE.md) — информационные домены, provenance, versioning, права изменения, retention и представления.
+- [Core Entity Catalog v0.1](CORE_ENTITY_CATALOG.md) — базовые сущности, их назначение и MVP Core Set.
+- [Relationship Catalog v0.1](RELATIONSHIP_CATALOG.md) — словарь инженерных связей, включая влияние и causal status.
 - [ADR-002: Project Intelligence & Estimation Engine](../09_Decisions/ADR-002-Project-Intelligence-Estimation-Engine.md) — решение о выделении оценочного и разведывательного контура.
 
 ## Планируемые архитектурные блоки
@@ -68,4 +71,4 @@ Lessons Learned
 
 ## Следующий шаг
 
-Создать машинно-читаемую JSON Schema для узлов/связей и первый тестовый граф на реальном legacy-кейсе `Sokrat → SOCRATES`, затем перевести схему в Django Domain Model.
+Создать машинно-читаемую `GRAPH_SCHEMA_V0_1.json` для узлов/связей и первый тестовый граф на реальном legacy-кейсе `Sokrat → SOCRATES`, затем перевести проверенную схему в `DOMAIN_MODEL.md` и Django Models.
