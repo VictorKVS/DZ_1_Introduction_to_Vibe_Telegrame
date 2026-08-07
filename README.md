@@ -9,6 +9,9 @@ FATHER — учебно-инженерный прототип метасисте
 FATHER ведётся как иерархическая инженерная система: **каждый функциональный блок имеет собственный `README.md`, а родительские README содержат ссылки на дочерние блоки**.
 
 - [Документация — карта разделов](docs/README.md)
+  - [00 — Project Management](docs/00_Project_Management/README.md)
+    - [FATHER Documentation Standard](docs/00_Project_Management/DOCUMENTATION_STANDARD.md)
+    - [GitHub Pages / Engineering Portal Plan](docs/00_Project_Management/GITHUB_PAGES_PLAN.md)
   - [03 — Architecture](docs/03_Architecture/README.md)
   - [09 — Architecture Decisions / ADR](docs/09_Decisions/README.md)
 - [90 — Innovation Registry](90_Innovation_Registry/README.md)
@@ -24,9 +27,25 @@ FATHER ведётся как иерархическая инженерная с�
 2. описать назначение, границы, входы/выходы, статус и следующие шаги;
 3. добавить ссылку в README родительского раздела;
 4. при необходимости добавить ссылку в этот главный README;
-5. не оставлять документы без навигации.
+5. не оставлять документы без навигации;
+6. проверять целостность ссылок и пригодность документов к публикации.
 
 Это считается частью поведения будущего агента FATHER, а не ручной косметикой репозитория.
+
+## Documentation Portal
+
+Markdown в Git является первым источником истины для инженерной документации. На его основе планируется создать GitHub Pages / Engineering Portal. Позже тот же граф документов должен использоваться Django Control Plane и Knowledge Base.
+
+```text
+Git Markdown
+   ├── GitHub Repository
+   ├── GitHub Pages
+   ├── Django Documentation UI
+   └── FATHER Knowledge Base
+```
+
+Стандарт: [FATHER Documentation Standard](docs/00_Project_Management/DOCUMENTATION_STANDARD.md)  
+План портала: [GitHub Pages / Engineering Portal Plan](docs/00_Project_Management/GITHUB_PAGES_PLAN.md)
 
 ## Главная идея
 
@@ -51,6 +70,7 @@ FATHER не является одним универсальным чат-бот
 - **Human Decision Gates** — критические бизнес-, архитектурные и security-решения утверждаются человеком.
 - **Plan → Fact → Learning** — каждый проект пополняет инженерную память.
 - **Every Project Must Leave an Asset** — каждый проект, исследование или даже отклонённая идея должны оставить повторно используемый интеллектуальный актив.
+- **Documentation First, Navigation Always** — каждый значимый блок документируется и включается в навигационный граф.
 - **Provider Independence** — LLM и внешние сервисы подключаются через адаптеры; ключи и секреты не хардкодятся.
 
 ## Режимы глубины
