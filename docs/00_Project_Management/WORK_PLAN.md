@@ -4,6 +4,28 @@
 **Planning horizon:** MVP → validated factory loop  
 **Principle:** каждый этап обязан оставлять измеримый артефакт, запись в Development Log и критерий проверки.
 
+## Progress Tracker
+
+Обозначения: `[x]` — артефакт создан и внесён в проект; `[~]` — выполняется; `[ ]` — не начато.
+
+### Foundation / Information Architecture
+
+- [x] FATHER Dictionary v0.1
+- [x] FATHER Meta Model v0.1
+- [x] Engineering Knowledge Graph concept
+- [x] FATHER Information Architecture v0.1
+- [x] Core Entity Catalog v0.1
+- [x] Relationship Catalog v0.1
+- [x] Machine-readable `GRAPH_SCHEMA_V0_1.json`
+- [x] Первый тестовый граф `Sokrat → SOCRATES`
+- [ ] Проверка JSON Schema автоматическим тестом
+- [ ] Domain Model v0.1
+- [ ] Decision Record Schema
+- [ ] Django Models v0.1
+- [ ] REST API Contract v0.1
+
+**Правило галочки:** `[x]` ставится только при наличии артефакта в репозитории. Реализационные задачи дополнительно требуют тест/валидацию перед статусом `VALIDATED`.
+
 ## Цель ближайшего цикла
 
 Построить первую сквозную производственную цепочку FATHER:
@@ -67,6 +89,20 @@
 ## Phase 2 — Domain Model и Decision/Knowledge Model
 
 **Цель:** описать сущности, которые должны жить дольше конкретной LLM или интерфейса.
+
+Прогресс:
+
+- [x] Controlled Vocabulary / Dictionary;
+- [x] Meta Model;
+- [x] Information Architecture;
+- [x] Entity Catalog;
+- [x] Relationship Catalog;
+- [x] Graph JSON Schema;
+- [x] Legacy graph example;
+- [ ] автоматическая schema validation;
+- [ ] Domain Model;
+- [ ] Decision Record schema;
+- [ ] Django mapping.
 
 Минимальные сущности:
 
@@ -414,11 +450,11 @@ MVP:
 
 ## Ближайшие 5 практических действий
 
-1. Завершить Legacy Asset Registry по найденным репозиториям.
-2. Написать SRS/NFR первой вертикали FATHER.
-3. Зафиксировать Domain Model и Decision Record schema.
-4. Поднять Django + PostgreSQL control plane и базовые сущности.
-5. Реализовать Knowledge Foundation и первую SOCRATES-lite сессию на трёх экспертных ролях.
+1. Проверить `GRAPH_SCHEMA_V0_1.json` автоматическим тестом на примере `Sokrat → SOCRATES`.
+2. Создать `DOMAIN_MODEL.md` и отображение сущностей на Django Models.
+3. Создать `DECISION_RECORD_SCHEMA.json` для SOCRATES-lite.
+4. Написать SRS/NFR первой вертикали FATHER.
+5. Поднять Django + PostgreSQL control plane и базовые сущности.
 
 После этих пяти действий проект перейдёт от архитектурной концепции к проверяемому работающему ядру.
 
