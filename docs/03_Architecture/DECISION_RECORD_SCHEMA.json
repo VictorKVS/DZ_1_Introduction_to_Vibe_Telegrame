@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://father.local/schemas/decision-record-v0.1.json",
+  "title": "FATHER Decision Record v0.1",
+  "type": "object",
+  "required": [
+    "decision_id",
+    "project_id",
+    "session_id",
+    "title",
+    "status",
+    "problem",
+    "alternatives",
+    "selected_alternative_id",
+    "rationale",
+    "evidence_refs",
+    "expected_effects",
+    "validation_plan",
+    "created_at"
+  ],
+  "properties": {
+    "decision_id": {"type": "string"},
+    "project_id": {"type": "string"},
+    "session_id": {"type": "string"},
+    "title": {"type": "string", "minLength": 1},
+    "status": {
+      "type": "string",
+      "enum": ["PROPOSED", "ACCEPTED", "IMPLEMENTED", "VALIDATED", "REVISED", "REJECTED", "DEPRECATED"]
+    },
+    "problem": {
+      "type": "object",
+      "required": ["problem_id", "summary"],
+      "properties": {
+        "problem_id": {"type": "string"},
+        "summary": {"type": "string"},
+        "goal_refs": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "constraints": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "alternatives": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["alternative_id", "title", "status"],
+        "properties": {
+          "alternative_id": {"type": "string"},
+          "title": {"type": "string"},
+          "description": {"type": "string"},
+          "estimated_cost": {"type": ["number", "null"]},
+          "estimated_time_hours": {"type": ["number", "null"]},
+          "risk_score": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+          "benefit_score": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+          "status": {"type": "string", "enum": ["CONSIDERED", "SELECTED", "REJECTED", "DEFERRED"]},
+          "rejection_reason": {"type": ["string", "null"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "selected_alternative_id": {"type": "string"},
+    "expert_review_refs": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "rationale": {
+      "type": "object",
+      "required": ["summary", "key_factors"],
+      "properties": {
+        "summary": {"type": "string"},
+        "key_factors": {"type": "array", "items": {"type": "string"}},
+        "tradeoffs": {"type": "array", "items": {"type": "string"}},
+        "uncertainties": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "expected_effects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["goal_ref", "metric", "direction"],
+        "properties": {
+          "goal_ref": {"type": "string"},
+          "metric": {"type": "string"},
+          "baseline": {"type": ["number", "string", "null"]},
+          "target": {"type": ["number", "string", "null"]},
+          "direction": {"type": "string", "enum": ["INCREASE", "DECREASE", "MAINTAIN", "BINARY"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["risk_id", "summary"],
+        "properties": {
+          "risk_id": {"type": "string"},
+          "summary": {"type": "string"},
+          "probability": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+          "impact": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+          "mitigation": {"type": ["string", "null"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "security_impact": {"type": ["string", "null"]},
+    "cost_impact": {"type": ["string", "null"]},
+    "time_impact": {"type": ["string", "null"]},
+    "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "validation_plan": {
+      "type": "object",
+      "required": ["method", "success_criteria"],
+      "properties": {
+        "method": {"type": "string"},
+        "success_criteria": {"type": "array", "items": {"type": "string"}},
+        "review_date": {"type": ["string", "null"], "format": "date"}
+      },
+      "additionalProperties": false
+    },
+    "actual_outcome_refs": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "human_gate": {
+      "type": "object",
+      "properties": {
+        "required": {"type": "boolean"},
+        "approver": {"type": ["string", "null"]},
+        "decision": {"type": ["string", "null"], "enum": ["APPROVED", "REJECTED", "RETURNED_FOR_REVIEW", null]},
+        "comment": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": ["string", "null"], "format": "date-time"},
+    "version": {"type": "string", "default": "0.1"}
+  },
+  "additionalProperties": false
+}
