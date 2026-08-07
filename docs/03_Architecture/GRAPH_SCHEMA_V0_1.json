@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://father.local/schema/engineering-knowledge-graph/v0.1",
+  "title": "FATHER Engineering Knowledge Graph Schema v0.1",
+  "type": "object",
+  "required": ["schema_version", "graph_id", "nodes", "edges"],
+  "properties": {
+    "schema_version": {"const": "0.1"},
+    "graph_id": {"type": "string", "minLength": 1},
+    "project_id": {"type": ["string", "null"]},
+    "created_at": {"type": "string", "format": "date-time"},
+    "nodes": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/node"}
+    },
+    "edges": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/edge"}
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "required": ["id", "type", "title", "status"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "type": {
+          "type": "string",
+          "enum": [
+            "Organization", "Person", "Project", "Goal", "Problem", "Constraint", "Assumption",
+            "Requirement", "AcceptanceCriterion", "Risk", "Source", "Evidence", "Claim", "KnowledgeItem",
+            "Contradiction", "Methodology", "Pattern", "AntiPattern", "ExpertRole", "ExpertBlueprint",
+            "DecisionSession", "Alternative", "ExpertReview", "Decision", "HumanGate", "Estimate", "Capability",
+            "Component", "Interface", "Repository", "CodeArtifact", "ConfigurationArtifact", "TestCase", "TestRun",
+            "SecurityFinding", "Control", "Metric", "Measurement", "Outcome", "Deviation", "LessonLearned",
+            "Standard", "Template", "ReuseRecord", "AgentBlueprint", "AgentBuild", "ToolCapability", "Policy",
+            "EvaluationRun", "Artifact"
+          ]
+        },
+        "title": {"type": "string", "minLength": 1},
+        "status": {"type": "string", "minLength": 1},
+        "version": {"type": ["string", "integer", "null"]},
+        "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "classification": {"type": ["string", "null"]},
+        "created_at": {"type": ["string", "null"], "format": "date-time"},
+        "updated_at": {"type": ["string", "null"], "format": "date-time"},
+        "created_by": {"type": ["string", "null"]},
+        "source_of_truth": {"type": ["string", "null"]},
+        "attributes": {"type": "object", "additionalProperties": true}
+      },
+      "additionalProperties": false
+    },
+    "edge": {
+      "type": "object",
+      "required": ["id", "source_node", "relation_type", "target_node", "status"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "source_node": {"type": "string", "minLength": 1},
+        "relation_type": {"type": "string", "minLength": 1},
+        "target_node": {"type": "string", "minLength": 1},
+        "status": {"type": "string", "minLength": 1},
+        "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "evidence_ref": {"type": ["string", "null"]},
+        "influence_direction": {
+          "type": ["string", "null"],
+          "enum": ["positive", "negative", "mixed", "unknown", null]
+        },
+        "influence_strength": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "causality_status": {
+          "type": ["string", "null"],
+          "enum": ["observed", "correlated", "hypothesized", "experimentally_supported", null]
+        },
+        "created_at": {"type": ["string", "null"], "format": "date-time"},
+        "attributes": {"type": "object", "additionalProperties": true}
+      },
+      "additionalProperties": false
+    }
+  }
+}
