@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://father.local/schemas/gate-record-v0.1.json",
+  "title": "FATHER Gate Record v0.1",
+  "type": "object",
+  "required": ["gate_run_id", "gate_id", "project_id", "stage", "gate_type", "status", "checks"],
+  "properties": {
+    "gate_run_id": {"type": "string"},
+    "gate_id": {"type": "string"},
+    "project_id": {"type": "string"},
+    "artifact_id": {"type": ["string", "null"]},
+    "stage": {"type": "string"},
+    "gate_type": {"enum": ["QUALITY", "SECURITY", "LEGAL", "ECONOMIC", "COMPOSITE"]},
+    "status": {"enum": ["PENDING", "RUNNING", "PASSED", "FAILED", "BLOCKED", "APPROVED_WITH_EXCEPTION"]},
+    "started_at": {"type": ["string", "null"], "format": "date-time"},
+    "finished_at": {"type": ["string", "null"], "format": "date-time"},
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["control_id", "status"],
+        "properties": {
+          "control_id": {"type": "string"},
+          "status": {"enum": ["NOT_EVALUATED", "PASS", "FAIL", "WAIVED", "NOT_APPLICABLE"]},
+          "finding_ids": {"type": "array", "items": {"type": "string"}},
+          "evidence_ids": {"type": "array", "items": {"type": "string"}},
+          "reviewer": {"type": ["string", "null"]},
+          "notes": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "blocking_findings": {"type": "array", "items": {"type": "string"}},
+    "waiver_ids": {"type": "array", "items": {"type": "string"}},
+    "economic_impact": {
+      "type": "object",
+      "properties": {
+        "planned_control_cost": {"type": "number", "default": 0},
+        "actual_control_cost": {"type": "number", "default": 0},
+        "expected_loss_before": {"type": "number", "default": 0},
+        "expected_loss_after": {"type": "number", "default": 0},
+        "currency": {"type": ["string", "null"]},
+        "status": {"enum": ["NOT_ESTIMATED", "ESTIMATED", "CONFIRMED", "ACTUAL"]}
+      },
+      "additionalProperties": true
+    },
+    "approved_by": {"type": ["string", "null"]},
+    "decision_record_id": {"type": ["string", "null"]}
+  },
+  "additionalProperties": true
+}
