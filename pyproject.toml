@@ -1,0 +1,27 @@
+[project]
+name = "father"
+version = "0.1.0"
+description = "FATHER Digital Engineering Operating System MVP"
+requires-python = ">=3.12"
+dependencies = [
+  "Django>=5.2,<6",
+  "djangorestframework>=3.15,<4",
+  "psycopg[binary]>=3.2,<4",
+  "pgvector>=0.4,<1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8,<9",
+  "pytest-django>=4.9,<5",
+  "jsonschema>=4.23,<5",
+  "ruff>=0.12,<1",
+]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+python_files = ["test_*.py", "*_test.py"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
