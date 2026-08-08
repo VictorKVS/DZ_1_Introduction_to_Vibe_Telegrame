@@ -1,184 +1,54 @@
-# Stage 02 — Business Requirements & Business Analysis v0.1
+# Stage 02 — Business Requirements & Business Analysis v0.2
 
 Status: DRAFT
-Owner: FATHER Architecture Governance
+Conforms to: FATHER Stage Operating Model v0.1
 
-## 1. Purpose
+## WHY
+Transform an approved opportunity into a measurable, traceable and economically justified Product/Business Package before system analysis.
 
-Transform an approved project opportunity into a measurable, traceable and economically justified business baseline before system design begins.
+## INPUT
+Stage 01 package: opportunity, problem hypothesis, initial scope, risks, constraints, ROM estimate, client evidence, decision and open questions.
 
-The stage must answer: what business problem is being solved, for whom, why now, what value is expected, what is in/out of scope, what constraints apply, who owns decisions, how success will be measured, and what uncertainty remains.
+## WHAT — mandatory artifacts
+BA-001 Business Requirements / PRD baseline; BA-002 Stakeholder & Decision Rights Map; BA-003 AS-IS; BA-004 TO-BE; BA-005 Business Rules; BA-006 Scope IN/OUT; BA-007 Business Model & Value/KPI Model; BA-008 Constraints/Dependencies; BA-009 Data & Information Needs; BA-010 Acceptance/Success Criteria; BA-011 Traceability Seed; BA-012 Analysis Decision Record; BA-013 Capability & Capacity Profile; BA-014 Method Selection Record; BA-015 Product/Analysis Handover Package.
 
-## 2. Entry criteria
+## HOW — methods
+Methods are selected by problem class and measured after use. Candidates include stakeholder interviews, workshops, observation, document/data analysis, JTBD, Value Proposition Canvas, Business Model Canvas where useful, customer journey/service blueprint, BPMN/process mapping, process mining when data exists, User Story Mapping, prototyping, market/competitor research, hypothesis testing and economic analysis.
 
-- Stage 01 Presale / Project Intake completed.
-- GO or NEED DISCOVERY decision recorded.
-- Initial scope, risks and ROM estimate available.
-- Business sponsor / decision owner identified or explicitly marked UNKNOWN.
+For material methods record: why selected, prerequisites, expected result, required competence, evidence quality, O/M/P effort, actual effort, findings, rework and downstream effectiveness.
 
-## 3. Mandatory artifacts
+## WITH WHAT
+Record source documents, client systems, databases, datasets, reports, logs, CRM/ERP/BI sources, knowledge bases, research sources, modeling/analytics tools, APIs, LLM assistance, licenses, environments, access rights and infrastructure capacity. Missing access/data is an explicit gap, not an implicit assumption.
 
-| ID | Artifact | Purpose | Primary owner |
-|---|---|---|---|
-| BA-001 | Business Requirements Document / PRD baseline | Defines business need and target result | Business Analyst / Product |
-| BA-002 | Stakeholder & Decision Rights Map | Identifies stakeholders, owners and approval rights | BA / PM |
-| BA-003 | AS-IS Model | Establishes current process and baseline | BA |
-| BA-004 | TO-BE Model | Describes desired operating model | BA + Product |
-| BA-005 | Business Rules Register | Captures rules that constrain behavior | BA + Domain Expert |
-| BA-006 | Scope & Boundary Baseline | Defines IN / OUT / assumptions | BA + PM |
-| BA-007 | Business Value & KPI Model | Defines measurable expected value | Product + Economist |
-| BA-008 | Constraints & Dependencies Register | Captures external/internal dependencies | BA + Architect |
-| BA-009 | Data & Information Needs | Defines required business information and sensitivity candidates | BA + Data/Security |
-| BA-010 | Acceptance & Success Criteria | Defines measurable business acceptance | Product + BA + QA |
-| BA-011 | Requirements Traceability Seed | Links Goal → Problem → Requirement → KPI | BA |
-| BA-012 | Analysis Decision Record | Records approval / rejection / unresolved issues | Responsible decision owner |
+## BY WHOM
+Business Sponsor; Product Owner/Product Manager; Business Analyst; PM; Domain Expert; Architect; Security; Legal/Compliance; Economist/Finance; QA; Data specialist. Each assignment stores required competency, actual competency, capacity/available hours, supervision/review need and later performance.
 
-Optional artifacts are allowed only when their value is explicit: customer journey, BPMN, service blueprint, domain glossary, prototypes, research report, market analysis, regulatory mapping, data-flow sketch.
+## WORK / MONEY / TIME
+Each work package stores role, O/M/P, PERT, confidence, dependencies, capacity, rate, labor cost, cloud/LLM/tool/license/external-service cost, tax/overhead placeholders, risk reserve, baseline and actual. Unknown money = 0 + NOT_ESTIMATED, never FREE.
 
-## 4. Work Breakdown Structure and resource model
+Core WPs: stakeholder discovery; goal/problem validation; AS-IS; TO-BE; business model/value/KPI; rules/constraints; data discovery; acceptance criteria; capability/capacity assessment; traceability; gate review; handover.
 
-Every work package SHALL have O/M/P estimates, PERT expected effort, role, competency requirement, rate placeholder, direct cost, non-labor cost, risk reserve, dependencies and confidence.
+## CAPABILITY & CAPACITY
+Compare required vs available people, competencies, hours, data, tools and infrastructure. Material gaps are classified and alternatives evaluated: train, hire, contractor, AI assistance, reuse/buy, change method, change scope or schedule.
 
-PERT expected effort: E = (O + 4M + P) / 6.
+## GATES
+Quality: completeness, consistency, ambiguity, evidence, testability and traceability.
+Security: critical assets/data, misuse candidates, CIA/privacy needs and early obligations.
+Legal: jurisdiction, contracts, sector rules, data/retention/localization and human approvals.
+Economics: business model, expected value, Cost of Delay, opportunity cost, budget boundary, Value of Information and cost categories.
+Technology Strategy: avoid unjustified solution constraints; identify reuse/buy/build/integrate candidates.
 
-| WP | Work package | Typical roles | Cost status initially |
-|---|---|---|---|
-| WP-02.01 | Stakeholder discovery | BA, PM | NOT_ESTIMATED |
-| WP-02.02 | Problem and goal validation | BA, Product, Sponsor | NOT_ESTIMATED |
-| WP-02.03 | AS-IS analysis | BA, Domain Expert | NOT_ESTIMATED |
-| WP-02.04 | TO-BE design | BA, Product, Architect | NOT_ESTIMATED |
-| WP-02.05 | Rules and constraints | BA, Legal, Security, Domain Expert | NOT_ESTIMATED |
-| WP-02.06 | Value/KPI economics | Economist, Product, BA | NOT_ESTIMATED |
-| WP-02.07 | Data needs and classification screening | BA, Data, Security | NOT_ESTIMATED |
-| WP-02.08 | Acceptance criteria | BA, QA, Product | NOT_ESTIMATED |
-| WP-02.09 | Traceability and baseline review | BA, PM, Architect | NOT_ESTIMATED |
-| WP-02.10 | Gate review and approval | Quality, Security, Legal, Economics, Technology | NOT_ESTIMATED |
+## DONE
+Business problem/outcome explicit; business model/value logic documented to appropriate depth; goals linked to KPIs; AS-IS/TO-BE sufficient; scope/assumptions baselined; acceptance measurable; material constraints identified; capability/capacity known; WBS/PERT/resource/cost baseline exists; open questions owned; gates resolved; System Analyst accepts handover.
 
-Unknown monetary values SHALL be represented as amount=0 with status=NOT_ESTIMATED, never as FREE.
+## OUTPUT — PRODUCT / ANALYSIS PACKAGE
+Business model + users/customers + problems/JTBD + value proposition + goals/KPIs + AS-IS/TO-BE + business requirements/rules + scope + constraints + data sources + available systems/APIs + available infrastructure + people/capacity/competencies + budget/resource limits + risks + acceptance/DoD + evidence + estimates + open questions + traceability.
 
-## 5. Roles and competencies
+## METRICS & LEARNING
+Outcome: value realization, late requirement discovery, goal/KPI coverage.
+Process: lead/touch/wait time, iterations, person-hours, plan/fact cost.
+Quality: ambiguity/conflicts, downstream rework/defects, handover rejection, traceability/acceptance coverage.
+Capability: competency gaps, method effectiveness, automation/reuse ratio, human vs AI-assisted effort.
+Economics: stage cost, expected value, Cost of Delay, expected loss from uncertainty, Value of Information, avoided downstream cost.
 
-Minimum role model:
-
-- Business Sponsor — owns business outcome and funding decision.
-- Product Owner / Product Manager — owns product value and priority.
-- Business Analyst — owns analysis quality and business requirements baseline.
-- Project Manager — owns coordination, dependencies, estimate baseline and change process.
-- Solution/System Architect — checks feasibility and future architectural implications without prematurely designing the solution.
-- Security specialist — identifies security/privacy obligations and unacceptable assumptions early.
-- Legal/Compliance specialist — identifies jurisdiction, contractual and regulatory constraints.
-- Economist/Financial analyst — validates value, cost-of-delay, expected benefits and economic assumptions.
-- QA/Test representative — ensures success and acceptance criteria are testable.
-- Domain Expert — validates business semantics and rules.
-
-Each assignment records role, person/agent, competency level, required competency, gap, supervision requirement and actual performance after completion.
-
-## 6. Cross-cutting gates
-
-### Quality Gate
-Checks completeness, consistency, testability, ambiguity, stakeholder approval, traceability and explicit unknowns.
-
-### Security Gate
-Checks data sensitivity candidates, misuse/abuse scenarios, access assumptions, critical business assets, confidentiality/integrity/availability needs and mandatory security requirements discovered at business level.
-
-### Legal / Compliance Gate
-Checks jurisdiction, personal/confidential data, contractual restrictions, sector requirements, retention/localization issues and mandatory human decisions.
-
-### Economic Gate
-Checks expected business value, cost categories, cost of delay, opportunity cost, benefit assumptions, budget boundary and whether further analysis is economically justified.
-
-### Technology Strategy Gate
-Checks whether requirements accidentally prescribe technology, identifies existing reusable solutions, buy/build/integrate candidates and technology constraints that genuinely come from business needs.
-
-No gate may silently PASS missing evidence. Statuses: PASS, FAIL, CONDITIONAL, WAIVER, NOT_APPLICABLE with justification.
-
-## 7. Metrics
-
-### Outcome metrics
-- Business requirements accepted without major re-baseline after architecture.
-- Percentage of business goals linked to measurable KPIs.
-- Percentage of requirements linked to a business problem/goal.
-- Late-discovered business requirements.
-- Business-value realization after release.
-
-### Process metrics
-- Lead time of Stage 02.
-- Person-hours by role.
-- PERT estimate vs actual effort.
-- Planned vs actual stage cost.
-- Number and age of unresolved questions.
-- Stakeholder response/wait time.
-- Number of analysis iterations.
-
-### Quality metrics
-- Ambiguity findings per requirement.
-- Duplicate/conflicting requirements.
-- Requirements rejected/reworked downstream.
-- Acceptance criteria coverage.
-- Traceability coverage.
-- Defects attributable to requirements.
-
-### Competency metrics
-- Estimate accuracy by role/competency level.
-- Rework by role/competency level.
-- Review findings by competency domain.
-- Human vs AI-assisted effort.
-- Reusable pattern/template utilization.
-- Competency gaps causing delay or defects.
-
-### Economic metrics
-- Cost of Stage 02.
-- Expected value of the proposed outcome.
-- Cost of Delay.
-- Expected loss from unresolved assumptions.
-- Value of Information for additional discovery.
-- Cost avoided by detecting infeasible/low-value requirements before design/code.
-
-## 8. Plan / Baseline / Actual
-
-For effort, schedule, cost and major KPI assumptions store:
-
-Estimate → Approved Baseline → Actual → Variance → Cause → Corrective Action → Lesson.
-
-Variance reasons use controlled categories where possible: scope change, client dependency, estimation error, competency gap, technology uncertainty, legal/security discovery, external dependency, defect/rework, deliberate investment, other.
-
-## 9. Change management
-
-After baseline approval, material changes require a Change Request containing:
-
-- changed requirement and reason;
-- requester and decision owner;
-- impacted goals/KPIs;
-- architecture impact candidate;
-- security/legal impact;
-- effort and schedule impact;
-- economic impact including Cost of Delay/opportunity cost;
-- test/acceptance impact;
-- decision and evidence.
-
-## 10. Exit criteria
-
-Stage 02 may complete only when:
-
-- business problem and target outcome are explicit;
-- stakeholders and decision rights are known or risks accepted;
-- AS-IS/TO-BE are sufficient for the project class;
-- scope IN/OUT and assumptions are baselined;
-- requirements have owners and traceability;
-- success criteria are measurable/testable;
-- material security/legal/economic constraints are identified;
-- WBS/resource/PERT estimate exists at appropriate confidence;
-- unknown costs are present as NOT_ESTIMATED placeholders;
-- unresolved items have owners and due dates;
-- required gates are PASS/CONDITIONAL or formally waived;
-- decision owner approves transition to System Analysis.
-
-## 11. Learning loop
-
-After later stages and after production outcome, Stage 02 metrics are revisited. FATHER SHALL learn which requirement patterns, roles, competencies, discovery methods and document depth correlate with lower rework, better estimate accuracy, higher delivery speed and higher realized business value.
-
-Target maturity: DEFINED → MEASURED → BASELINED → CONTROLLED → OPTIMIZED → PREDICTIVE.
-
-## 12. Core traceability
-
-Business Goal → Business Problem → Business Requirement → KPI / Value Metric → Business Rule / Constraint → Acceptance Criterion → System Requirement → Architecture Decision → Test → Code/Process/Infrastructure → Production Metric → Business Outcome → Lesson Learned.
+Learning loop: project class + method + role/competency + resources + estimate + actual + quality/rework + business outcome → update methods, templates, competency plans and estimation coefficients.
