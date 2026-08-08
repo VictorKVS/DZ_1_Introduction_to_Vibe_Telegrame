@@ -6,7 +6,7 @@
 
 ## Назначение
 
-Раздел фиксирует целевую и эволюционную архитектуру FATHER, границы подсистем, потоки данных, архитектурные варианты, trade-off и связь архитектуры со сроками, стоимостью, рисками и безопасностью.
+Раздел фиксирует целевую и эволюционную архитектуру FATHER, границы подсистем, потоки данных, архитектурные варианты, trade-off и связь архитектуры со сроками, стоимостью, рисками, безопасностью и соблюдением норм.
 
 ## Место в FATHER
 
@@ -17,7 +17,7 @@ Analysis
         ↓
 Architecture
         ↓
-Security / Test Design / Estimation
+Quality / Security / Legal / Economics / Test Design
         ↓
 Implementation
         ↓
@@ -30,12 +30,15 @@ Operational Outcome
 Lessons Learned / Organizational Memory
 ```
 
-Архитектура не считается обоснованной, если невозможно объяснить, какое требование или риск требует конкретного компонента и какие стоимость и эксплуатационную сложность он создаёт.
+Архитектура не считается обоснованной, если невозможно объяснить, какое требование или риск требует конкретного компонента, какими тестами он проверяется, каким нормам должен соответствовать и какие стоимость и эксплуатационную сложность он создаёт.
 
 ## Ключевые принципы
 
 - Minimum Sufficient Architecture.
 - Security by Construction + Security by Default.
+- Legal/Compliance by Construction.
+- Economics by Construction.
+- Cross-Cutting Gates: Quality + Security + Legal/Compliance + Economics на всех стадиях.
 - Evidence over opinion.
 - Provider Independence.
 - Human Decision Gates.
@@ -50,6 +53,10 @@ Lessons Learned / Organizational Memory
 ## Текущие документы
 
 - [Engineering Delivery Pipeline v0.1](ENGINEERING_DELIVERY_PIPELINE.md) — нормативная цепочка ТЗ → аналитика → архитектура → ИБ → тесты → код → V&V → outcome.
+- [Cross-Cutting Gates Standard v0.1](CROSS_CUTTING_GATES_STANDARD.md) — обязательные Quality, Security, Legal/Compliance и Economic Gate на всех стадиях производства.
+- [Economic Gate v0.1](ECONOMIC_GATE.md) — стоимость, сроки, TCO, ROI/NPV/payback при применимости, Cost of Delay, Value of Information и plan/fact.
+- [Legal & Regulatory Compliance Gate](LEGAL_COMPLIANCE_GATE.md) — юрисдикции, региональные нормы, regulatory impact и Human Gate юриста.
+- [Impact Analysis Model](IMPACT_ANALYSIS_MODEL.md) — радиус изменений от требований/стандартов/кода до тестов, рисков и стоимости.
 - [FATHER Delivery Intelligence](FATHER_DELIVERY_INTELLIGENCE.md) — Project/Technology OSINT, Estimation Engine, Talent Intelligence, Staffing, Risk, TCO и Delivery Control.
 - [Engineering Knowledge Graph](ENGINEERING_KNOWLEDGE_GRAPH.md) — граф целей, проблем, доказательств, решений, кода, тестов, метрик, результатов и lessons learned.
 - [FATHER Meta Model v0.1](FATHER_META_MODEL.md) — типы узлов/связей, веса, жизненные циклы, трассировка до CodeArtifact и Goal Impact Model.
@@ -68,14 +75,25 @@ Lessons Learned / Organizational Memory
 - `DECISION_RECORD_SCHEMA.json` — структура Decision Record.
 - `../20_Legacy_Intelligence/SOKRAT_TO_SOCRATES_GRAPH_V0_1.json` — первый реальный тестовый граф наследования.
 
+## Сквозной стандарт ворот
+
+На каждом этапе действуют четыре обязательных класса проверки:
+
+```text
+              QUALITY
+                 │
+SECURITY ─── Engineering Stage ─── LEGAL / COMPLIANCE
+                 │
+              ECONOMICS
+```
+
+Результат каждого gate сохраняется как проверяемый артефакт со статусом, findings, evidence, владельцем и при необходимости Human Gate. `FAIL` не должен превращаться в молчаливое продолжение разработки.
+
 ## Планируемые архитектурные блоки
 
-- Requirements/Architecture/Test traceability rules.
-- Standards Profiles: base / security / industry / customer / regulatory.
-- Impact Analysis Engine для изменения CodeArtifact.
-- Automated schema validation.
-- REST API Contract v0.1.
-- Django migrations baseline.
+- Machine-readable Gate Record schema.
+- Standards/Jurisdiction Profile model in Django.
+- TraceLink / ChangeEvent / ImpactRecord implementation.
 - Product Discovery & Expert Review Board.
 - Solution Research / GitHub Intelligence / Reengineering.
 - Knowledge Factory.
@@ -93,4 +111,4 @@ Lessons Learned / Organizational Memory
 
 ## Следующий шаг
 
-Развить текущий Django-срез до сквозной трассы `Goal → Requirement/Problem → Evidence → DecisionSession → Decision → TestCase → CodeArtifact → TestRun → Outcome`, а затем формализовать Standards Profile и impact-analysis для безопасных изменений кода.
+Перевести Cross-Cutting Gates в машинно-читаемую модель: `GateDefinition`, `GateCheck`, `GateRun`, `Finding`, `StandardProfile`, `JurisdictionProfile`, `EconomicRecord`; связать их с Requirements Traceability Matrix и реализовать первый автоматический gate в Django/CI.
