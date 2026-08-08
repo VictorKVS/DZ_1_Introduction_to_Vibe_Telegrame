@@ -1,0 +1,157 @@
+{
+  "standard_id": "STD-006",
+  "title": "Security Engineering",
+  "version": "0.1",
+  "status": "DRAFT",
+  "scope": ["requirements", "analysis", "architecture", "code", "infrastructure", "testing", "deployment", "operations"],
+  "owner_role": "Security Architect",
+  "applicability_rules": [
+    "Apply to every FATHER-produced software or agent project unless explicitly waived.",
+    "Additional controls may be added by Jurisdiction, Customer, Industry or Contract profiles."
+  ],
+  "required_artifacts": [
+    "Security Requirements",
+    "Data Classification",
+    "Threat Model",
+    "Security Architecture Review",
+    "Security Test Plan",
+    "Security Gate Results",
+    "Residual Risk Record"
+  ],
+  "controls": [
+    {
+      "control_id": "CTL-601",
+      "title": "Security requirements are identified before implementation",
+      "stage": "requirements",
+      "mandatory": true,
+      "requirement": "Project requirements shall include applicable security, privacy and access-control requirements.",
+      "verification_method": "Requirements review",
+      "pass_criteria": "Security requirements exist, are traceable to project risks/standards and have acceptance criteria.",
+      "fail_severity": "HIGH",
+      "evidence_type": ["SRS", "Security Requirements", "Traceability Matrix"],
+      "automation_level": "ASSISTED",
+      "human_gate_required": true
+    },
+    {
+      "control_id": "CTL-602",
+      "title": "Data is classified",
+      "stage": "analysis",
+      "mandatory": true,
+      "requirement": "Processed, stored and transmitted data shall be classified before architecture approval.",
+      "verification_method": "Data-flow and data-classification review",
+      "pass_criteria": "Data classes, owners, storage locations and transfer paths are documented.",
+      "fail_severity": "HIGH",
+      "evidence_type": ["Data Classification", "Data Flow Diagram"],
+      "automation_level": "ASSISTED",
+      "human_gate_required": true
+    },
+    {
+      "control_id": "CTL-603",
+      "title": "Threat model exists for the approved architecture",
+      "stage": "architecture",
+      "mandatory": true,
+      "requirement": "Trust boundaries, attack surfaces, abuse cases and material threat scenarios shall be identified.",
+      "verification_method": "Threat modeling review",
+      "pass_criteria": "Material threats have owners, mitigations, expected loss/residual risk or explicit acceptance.",
+      "fail_severity": "CRITICAL",
+      "evidence_type": ["Threat Model", "Threat & Loss Matrix", "Architecture Diagram"],
+      "automation_level": "HYBRID",
+      "human_gate_required": true
+    },
+    {
+      "control_id": "CTL-604",
+      "title": "Authorization boundaries are explicitly designed",
+      "stage": "architecture",
+      "mandatory": true,
+      "requirement": "Authentication, authorization, privileged actions and tenant/project isolation shall be defined before implementation.",
+      "verification_method": "Architecture and API review",
+      "pass_criteria": "Security boundaries, roles and denied-by-default behavior are documented and testable.",
+      "fail_severity": "CRITICAL",
+      "evidence_type": ["Architecture", "API Contract", "Access Model"],
+      "automation_level": "ASSISTED",
+      "human_gate_required": true
+    },
+    {
+      "control_id": "CTL-605",
+      "title": "Source code passes automated security checks",
+      "stage": "code",
+      "mandatory": true,
+      "requirement": "Source changes shall pass SAST, secret scanning and dependency checks where applicable.",
+      "verification_method": "CI security pipeline",
+      "pass_criteria": "No unresolved blocking findings according to project severity policy.",
+      "fail_severity": "HIGH",
+      "evidence_type": ["CI Run", "SAST Report", "Secrets Scan", "Dependency Scan"],
+      "automation_level": "AUTOMATED",
+      "human_gate_required": false
+    },
+    {
+      "control_id": "CTL-606",
+      "title": "Infrastructure security baseline is verified",
+      "stage": "infrastructure",
+      "mandatory": true,
+      "requirement": "Network zones, trust boundaries, secrets, backup, logging, administrative access and hardening shall be defined and checked.",
+      "verification_method": "Infrastructure security review and automated checks where available",
+      "pass_criteria": "Required baseline controls are implemented or formally waived.",
+      "fail_severity": "CRITICAL",
+      "evidence_type": ["Infrastructure Profile", "Configuration Baseline", "Infrastructure Test Results"],
+      "automation_level": "HYBRID",
+      "human_gate_required": true
+    },
+    {
+      "control_id": "CTL-607",
+      "title": "Security acceptance tests are passed",
+      "stage": "testing",
+      "mandatory": true,
+      "requirement": "Security requirements and material threat scenarios shall have corresponding tests or documented review procedures.",
+      "verification_method": "Security test execution",
+      "pass_criteria": "Blocking security tests pass and residual findings are accepted by the accountable role.",
+      "fail_severity": "CRITICAL",
+      "evidence_type": ["Security Test Plan", "Test Run", "Finding Register"],
+      "automation_level": "HYBRID",
+      "human_gate_required": true
+    },
+    {
+      "control_id": "CTL-608",
+      "title": "Release has an explicit residual-risk decision",
+      "stage": "deployment",
+      "mandatory": true,
+      "requirement": "Open material findings and residual risk shall be reviewed before release.",
+      "verification_method": "Release Security Gate",
+      "pass_criteria": "No unaccepted blocking risk remains; waivers have owner and expiry date.",
+      "fail_severity": "CRITICAL",
+      "evidence_type": ["GateRun", "Residual Risk Record", "Waiver"],
+      "automation_level": "HYBRID",
+      "human_gate_required": true
+    },
+    {
+      "control_id": "CTL-609",
+      "title": "Operational security monitoring exists",
+      "stage": "operations",
+      "mandatory": true,
+      "requirement": "Security-relevant events, incidents, configuration changes and material anomalies shall be observable and reviewable.",
+      "verification_method": "Operational control review",
+      "pass_criteria": "Logging, alerting, incident routing and evidence retention are defined for the project risk profile.",
+      "fail_severity": "HIGH",
+      "evidence_type": ["Monitoring Plan", "Audit Configuration", "Incident Procedure"],
+      "automation_level": "HYBRID",
+      "human_gate_required": true
+    }
+  ],
+  "gates": ["GATE-SEC-REQ", "GATE-SEC-ARCH", "GATE-SEC-CODE", "GATE-SEC-RELEASE", "GATE-SEC-OPS"],
+  "metrics": [
+    "security_requirement_coverage",
+    "threat_mitigation_coverage",
+    "open_findings_by_severity",
+    "mean_time_to_remediate",
+    "expected_loss_before_controls",
+    "expected_loss_after_controls",
+    "security_control_cost",
+    "avoided_expected_loss",
+    "security_rework_hours"
+  ],
+  "references": [
+    "docs/03_Architecture/CROSS_CUTTING_GATES_STANDARD.md",
+    "docs/03_Architecture/THREAT_LOSS_MATRIX.md",
+    "docs/03_Architecture/INFRASTRUCTURE_LIFECYCLE_STANDARD_V0_1.md"
+  ]
+}
