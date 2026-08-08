@@ -34,9 +34,16 @@ Standard Review / Improvement
 
 - [Engineering Constitution v0.1](ENGINEERING_CONSTITUTION_V0_1.md) — неизменяемые базовые принципы инженерного производства FATHER.
 - [Standards Catalog v0.1](STANDARDS_CATALOG_V0_1.md) — реестр внутренних стандартов `STD-*`.
+- [Machine-Readable Standard Model v0.1](MACHINE_READABLE_STANDARD_MODEL_V0_1.md) — формальная модель `StandardDefinition / ControlDefinition / GateDefinition / ComplianceRecord`.
 - [Pattern Library v0.1](PATTERN_LIBRARY_V0_1.md) — переиспользуемые инженерные решения `PAT-*`.
 - [Anti-Pattern Library v0.1](ANTIPATTERN_LIBRARY_V0_1.md) — решения и практики, которые приводят к систематическим потерям `APT-*`.
 - [Decision Pattern Library v0.1](DECISION_PATTERN_LIBRARY_V0_1.md) — стандартизированные способы принятия решений `DP-*`.
+
+## Машинно-читаемые артефакты
+
+- [`STANDARD_DEFINITION_SCHEMA_V0_1.json`](STANDARD_DEFINITION_SCHEMA_V0_1.json) — JSON Schema для исполняемого стандарта.
+- [`GATE_RECORD_SCHEMA_V0_1.json`](GATE_RECORD_SCHEMA_V0_1.json) — JSON Schema результата выполнения Gate.
+- [`STD-006-SECURITY-ENGINEERING_V0_1.json`](STD-006-SECURITY-ENGINEERING_V0_1.json) — первый исполняемый профиль стандарта: Security Engineering.
 
 ## Идентификаторы
 
@@ -65,6 +72,37 @@ Standard Review / Improvement
 10. историю изменений;
 11. ссылку на evidence и результаты эксплуатации.
 
+## Исполняемый цикл
+
+```text
+StandardDefinition
+      ↓
+StandardProfile for Project
+      ↓
+Applicable Controls by Stage
+      ↓
+GateRun
+      ↓
+Evidence + Findings + Economic Impact
+      ↓
+PASS / FAIL / WAIVER
+      ↓
+ComplianceRecord
+      ↓
+Outcome / Metrics
+      ↓
+Update Standard
+```
+
+Первый эталонный стандарт — `STD-006 Security Engineering`. Он уже содержит контроли от требований и классификации данных до threat modeling, CI security checks, инфраструктуры, security acceptance и operational monitoring.
+
+## Следующий шаг
+
+1. Валидировать `STD-006-SECURITY-ENGINEERING_V0_1.json` против `STANDARD_DEFINITION_SCHEMA_V0_1.json` в CI.
+2. Добавить модели Django: `StandardDefinition`, `ControlDefinition`, `StandardProfile`, `GateRun`, `GateCheckResult`, `Finding`, `Waiver`, `ComplianceRecord`.
+3. Реализовать первый автоматический `Security Gate`.
+4. Затем тем же форматом перевести `STD-007 Legal/Compliance`, `STD-008 Economics`, `STD-005 Infrastructure`, `STD-011 Testing`.
+
 ## Статус
 
-`BASELINE v0.1 / ACTIVE DEVELOPMENT`
+`BASELINE v0.1 / FIRST EXECUTABLE STANDARD CREATED`
