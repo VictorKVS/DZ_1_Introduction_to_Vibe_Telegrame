@@ -17,8 +17,8 @@
 | STD-009 | Threat & Loss Economics | ACTIVE | угрозы → сценарии ущерба → expected/residual loss |
 | STD-010 | Cost Model | ACTIVE | полный каталог затрат и `NOT_ESTIMATED` placeholders |
 | STD-011 | Test Engineering | PLANNED | test design, acceptance, V&V, regression |
-| STD-012 | Software Development | PLANNED | coding rules, reviews, quality baseline |
-| STD-013 | CI/CD & Release | PLANNED | automated gates and controlled release |
+| STD-012 | Software Development | PLANNED | secure coding rules, reviews, quality baseline |
+| STD-013 | DevSecOps & Secure SDLC | ACTIVE-PARTIAL | GitHub governance, CI security pipeline, supply-chain security, controlled release |
 | STD-014 | Operations & Observability | PLANNED | monitoring, SLO/SLA, incidents, capacity |
 | STD-015 | Change & Impact Management | ACTIVE-PARTIAL | impact graph, change record, regression scope |
 | STD-016 | Knowledge & Evidence | ACTIVE-PARTIAL | provenance, confidence, freshness, validation |
@@ -26,6 +26,7 @@
 | STD-018 | Organizational Memory | ACTIVE-PARTIAL | outcome, lessons learned, reuse statistics |
 | STD-019 | Documentation & Navigation | ACTIVE | README hierarchy, traceability, documentation lifecycle |
 | STD-020 | Agent/Product Blueprint | PLANNED | reproducible product/agent assembly contract |
+| STD-021 | Technology Intelligence & Reuse | PLANNED | аналоги, technology radar, buy/adapt/build, migration economics |
 
 ## Обязательные поля будущего машинного представления
 
