@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://father.local/schemas/standard-definition-v0.1.json",
+  "title": "FATHER Standard Definition v0.1",
+  "type": "object",
+  "required": ["standard_id", "title", "version", "status", "scope", "owner_role", "controls"],
+  "properties": {
+    "standard_id": {"type": "string", "pattern": "^STD-[0-9]{3}$"},
+    "title": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "minLength": 1},
+    "status": {"enum": ["DRAFT", "REVIEW", "ACTIVE", "REVISED", "DEPRECATED"]},
+    "scope": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "owner_role": {"type": "string", "minLength": 1},
+    "applicability_rules": {"type": "array", "items": {"type": "string"}},
+    "required_artifacts": {"type": "array", "items": {"type": "string"}},
+    "controls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["control_id", "title", "stage", "mandatory", "requirement", "verification_method", "pass_criteria", "fail_severity"],
+        "properties": {
+          "control_id": {"type": "string", "pattern": "^CTL-[0-9]{3,4}$"},
+          "title": {"type": "string"},
+          "stage": {"type": "string"},
+          "mandatory": {"type": "boolean"},
+          "requirement": {"type": "string"},
+          "verification_method": {"type": "string"},
+          "pass_criteria": {"type": "string"},
+          "fail_severity": {"enum": ["INFO", "LOW", "MEDIUM", "HIGH", "CRITICAL"]},
+          "evidence_type": {"type": "array", "items": {"type": "string"}},
+          "automation_level": {"enum": ["MANUAL", "ASSISTED", "AUTOMATED", "HYBRID"]},
+          "human_gate_required": {"type": "boolean"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "gates": {"type": "array", "items": {"type": "string"}},
+    "metrics": {"type": "array", "items": {"type": "string"}},
+    "references": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}
