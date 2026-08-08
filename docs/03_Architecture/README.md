@@ -13,15 +13,21 @@
 ```text
 Idea / Requirements
         ↓
+Analysis
+        ↓
 Architecture
         ↓
-Estimation / Security / Tests
+Security / Test Design / Estimation
         ↓
 Implementation
         ↓
+Verification / Validation
+        ↓
 Verified Product / Agent
         ↓
-Lessons Learned
+Operational Outcome
+        ↓
+Lessons Learned / Organizational Memory
 ```
 
 Архитектура не считается обоснованной, если невозможно объяснить, какое требование или риск требует конкретного компонента и какие стоимость и эксплуатационную сложность он создаёт.
@@ -34,13 +40,16 @@ Lessons Learned
 - Provider Independence.
 - Human Decision Gates.
 - Architecture Baseline + Change Management.
+- Tests-as-Specification до основного кодирования.
+- Код является производным артефактом требований, анализа, архитектуры и тестового baseline.
 - План/факт и обучение на фактическом результате.
-- Goal → Problem → Decision → Implementation → Outcome traceability.
+- Goal → Requirement → Decision → Code → Test → Outcome traceability.
 - Knowledge Graph хранит причинно-связанную историю инженерной деятельности, а не только документы.
 - Controlled Vocabulary: один термин имеет одно официальное значение в системе.
 
 ## Текущие документы
 
+- [Engineering Delivery Pipeline v0.1](ENGINEERING_DELIVERY_PIPELINE.md) — нормативная цепочка ТЗ → аналитика → архитектура → ИБ → тесты → код → V&V → outcome.
 - [FATHER Delivery Intelligence](FATHER_DELIVERY_INTELLIGENCE.md) — Project/Technology OSINT, Estimation Engine, Talent Intelligence, Staffing, Risk, TCO и Delivery Control.
 - [Engineering Knowledge Graph](ENGINEERING_KNOWLEDGE_GRAPH.md) — граф целей, проблем, доказательств, решений, кода, тестов, метрик, результатов и lessons learned.
 - [FATHER Meta Model v0.1](FATHER_META_MODEL.md) — типы узлов/связей, веса, жизненные циклы, трассировка до CodeArtifact и Goal Impact Model.
@@ -61,6 +70,9 @@ Lessons Learned
 
 ## Планируемые архитектурные блоки
 
+- Requirements/Architecture/Test traceability rules.
+- Standards Profiles: base / security / industry / customer / regulatory.
+- Impact Analysis Engine для изменения CodeArtifact.
 - Automated schema validation.
 - REST API Contract v0.1.
 - Django migrations baseline.
@@ -81,4 +93,4 @@ Lessons Learned
 
 ## Следующий шаг
 
-Проверить JSON Schema автоматически, зафиксировать `REST_API_CONTRACT_V0_1.md`, после чего создать первый Django skeleton и миграционный baseline для цепочки `Project → Goal → Source/Evidence → DecisionSession → Alternatives → ExpertReviews → Decision`.
+Развить текущий Django-срез до сквозной трассы `Goal → Requirement/Problem → Evidence → DecisionSession → Decision → TestCase → CodeArtifact → TestRun → Outcome`, а затем формализовать Standards Profile и impact-analysis для безопасных изменений кода.
