@@ -1,0 +1,37 @@
+name: FATHER Schema Validation
+
+on:
+  push:
+    paths:
+      - 'docs/03_Architecture/*.json'
+      - 'docs/20_Legacy_Intelligence/*.json'
+      - 'tools/validate_contracts.py'
+      - 'requirements-dev.txt'
+      - '.github/workflows/schema-validation.yml'
+  pull_request:
+    paths:
+      - 'docs/03_Architecture/*.json'
+      - 'docs/20_Legacy_Intelligence/*.json'
+      - 'tools/validate_contracts.py'
+      - 'requirements-dev.txt'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install validation dependencies
+        run: python -m pip install -r requirements-dev.txt
+
+      - name: Validate FATHER contracts and fixtures
+        run: python tools/validate_contracts.py
