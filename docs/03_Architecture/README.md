@@ -55,6 +55,8 @@ Lessons Learned / Organizational Memory
 - [Engineering Delivery Pipeline v0.1](ENGINEERING_DELIVERY_PIPELINE.md) — нормативная цепочка ТЗ → аналитика → архитектура → ИБ → тесты → код → V&V → outcome.
 - [Cross-Cutting Gates Standard v0.1](CROSS_CUTTING_GATES_STANDARD.md) — обязательные Quality, Security, Legal/Compliance и Economic Gate на всех стадиях производства.
 - [Economic Gate v0.1](ECONOMIC_GATE.md) — стоимость, сроки, TCO, ROI/NPV/payback при применимости, Cost of Delay, Value of Information и plan/fact.
+- [Cost Model Placeholders v0.1](COST_MODEL_PLACEHOLDERS_V0_1.md) — заранее встроенные статьи облаков, LLM, аренды, налогов, лицензий, персонала, ИБ, эксплуатации, рисков и прочих расходов; неизвестные значения существуют как `0 / NOT_ESTIMATED` до появления реальных цен.
+- [Threat & Loss Matrix v0.1](THREAT_LOSS_MATRIX.md) — перевод угроз и проектных рисков в ожидаемые денежные потери, включая недополученную выручку/маржу и Cost of Delay.
 - [Legal & Regulatory Compliance Gate](LEGAL_COMPLIANCE_GATE.md) — юрисдикции, региональные нормы, regulatory impact и Human Gate юриста.
 - [Impact Analysis Model](IMPACT_ANALYSIS_MODEL.md) — радиус изменений от требований/стандартов/кода до тестов, рисков и стоимости.
 - [FATHER Delivery Intelligence](FATHER_DELIVERY_INTELLIGENCE.md) — Project/Technology OSINT, Estimation Engine, Talent Intelligence, Staffing, Risk, TCO и Delivery Control.
@@ -92,7 +94,8 @@ SECURITY ─── Engineering Stage ─── LEGAL / COMPLIANCE
 ## Планируемые архитектурные блоки
 
 - Machine-readable Gate Record schema.
-- Standards/Jurisdiction Profile model in Django.
+- Standards/Jurisdiction/Tax/Cost Profile model in Django.
+- CostItem / PriceCatalog / ActualCost / VarianceRecord implementation.
 - TraceLink / ChangeEvent / ImpactRecord implementation.
 - Product Discovery & Expert Review Board.
 - Solution Research / GitHub Intelligence / Reengineering.
@@ -111,4 +114,4 @@ SECURITY ─── Engineering Stage ─── LEGAL / COMPLIANCE
 
 ## Следующий шаг
 
-Перевести Cross-Cutting Gates в машинно-читаемую модель: `GateDefinition`, `GateCheck`, `GateRun`, `Finding`, `StandardProfile`, `JurisdictionProfile`, `EconomicRecord`; связать их с Requirements Traceability Matrix и реализовать первый автоматический gate в Django/CI.
+Перевести Cross-Cutting Gates и Cost Model в машинно-читаемую модель: `GateDefinition`, `GateCheck`, `GateRun`, `Finding`, `StandardProfile`, `JurisdictionProfile`, `TaxProfile`, `CostProfile`, `CostItem`, `PriceCatalog`, `EconomicRecord`; связать их с Requirements Traceability Matrix и реализовать первый автоматический gate и экономический профиль в Django/CI.
