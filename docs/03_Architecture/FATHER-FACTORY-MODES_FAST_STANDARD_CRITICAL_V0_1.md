@@ -1,151 +1,223 @@
-# FATHER Factory Modes — FAST / STANDARD / CRITICAL v0.1
+# FATHER Project Processing Profiles v0.2
 
 Status: DRAFT / PROVISIONAL
 Owner: Product Engineering Governance
 
 ## Purpose
 
-Use one underlying model and traceability system with different depths of research, documentation, review and human participation. The mode changes process intensity, not the requirement to preserve WHAT, WHY, key evidence, tests and outcomes.
+Separate four concepts that must not be mixed:
 
-Default for early solo use: FAST.
+1. Project Type — what kind of project this is: startup, learning task, internal tool, commercial product, regulated system, etc.
+2. FATHER Depth — how deeply FATHER processes the project: MIN / FAST / STANDARD / FULL.
+3. Decision Criticality — how risky a specific decision is: L1 / L2 / L3 / L4.
+4. Learning Override — a temporary per-stage depth increase used to study/practice a discipline even when the project itself is small.
 
-## 1. FAST — Startup / Solo Founder Mode
+The same underlying model, stable IDs and traceability are used at all depths.
 
-Goal: maximum speed with minimum human overhead while preserving enough traceability to avoid uncontrolled improvisation.
+Core invariant:
+WHAT → WHY → DECISION → TEST → IMPLEMENTATION → RESULT → LESSON.
 
-Typical use:
-- prototype, MVP, internal tool, Telegram bot, small SaaS experiment;
-- low/moderate financial exposure;
-- reversible technology choices;
-- one founder or very small team;
-- short feedback cycle.
+## 1. Project Type
 
-Human interaction target:
-- answer only critical clarification questions;
-- approve product direction and material trade-offs;
-- review exceptional security/legal/financial risks;
-- approve release when needed.
+Project Type describes context, not governance depth.
 
-AI/agents should automatically prepare:
-- compact Product Brief;
-- requirements and open-question register;
-- architecture options and recommendation;
+Initial types:
+- LEARNING_TASK
+- STARTUP / MVP
+- INTERNAL_TOOL
+- PRODUCT
+- ENTERPRISE
+- REGULATED / CRITICAL
+- RESEARCH / R&D
+
+A STARTUP may run at MIN, FAST, STANDARD or FULL. A LEARNING_TASK may also run at any depth.
+
+## 2. FATHER Depth
+
+### MIN
+
+Purpose: preserve the production chain with the smallest practical overhead.
+
+Use for small homework, spikes, tiny utilities and low-risk experiments.
+
+FATHER should automatically keep:
+- short problem/goal;
+- core requirements;
+- one selected solution with WHY;
+- minimal diagram where useful;
+- expected result / essential tests before code;
+- implementation trace;
+- result and lesson.
+
+Most enterprise artifacts are merged into structured records and hidden from the normal UI.
+
+### FAST
+
+Purpose: startup/solo-founder speed while keeping enough architecture/test/security discipline to avoid uncontrolled improvisation.
+
+Adds as appropriate:
+- Product Brief;
+- requirements/open questions;
+- architecture alternatives;
 - evidence/source links;
-- lightweight risk/TCO note;
-- core diagrams;
+- compact risk/TCO note;
+- core graphical views;
 - Test Design Before Code;
-- implementation work packages;
+- work packages and estimates;
 - DevSecOps checks;
-- release notes and outcome review.
+- outcome review.
 
-FAST may merge documents, but SHALL retain stable IDs and structured traceability in the model.
+Default recommendation for early FATHER projects and most learning projects.
 
-Minimum FAST gate before coding:
-Problem/value understood → critical requirements/NFRs explicit → architecture selected with WHY → core scenario diagram exists → essential positive/negative/security tests defined → cost/risk not materially unknown → DoR passes.
+### STANDARD
 
-Minimum FAST diagrams:
-- one context/container view;
-- scenario/sequence view for critical flows;
-- data model when persistent data exists;
-- trust/security boundary view when external/sensitive access exists;
-- deployment view when non-trivial infrastructure exists.
+Purpose: balanced production governance for long-lived products and teams.
 
-Default decision levels: L1/L2. L3/L4 triggers override FAST simplification.
+Uses the full Stage Operating Model proportionately, with fuller Architecture Package, Technical Design, test strategy, economics, capability/capacity model, change management and scheduled outcome reviews.
 
-## 2. STANDARD — Product / Team Mode
+### FULL
 
-Goal: balanced governance, quality and repeatability for production systems with a team, customers and meaningful operational responsibility.
+Purpose: activate the complete FATHER factory model for deep engineering, auditability, organizational learning or high-complexity work.
 
-Typical use:
-- commercial product;
-- multiple services/integrations;
-- meaningful SLA/data/security requirements;
-- several engineering roles;
-- expected long-term maintenance.
+May include full business/system analysis, evidence/OSINT research, failure cases, architecture methods, C4/BPMN/UML/DFD/ER views, threat modeling, economic scenarios, infrastructure/capacity planning, detailed Technical Design, Test Design Before Code, supply-chain controls, operations, outcome validation, knowledge updates and governance evidence.
 
-Requires fuller Stage Operating Model, structured Architecture Package, Technical Design, Test Design, DevSecOps, economics, capability/capacity plan and scheduled Architecture Outcome Reviews.
+FULL means maximum justified depth, not maximum paperwork. Artifacts may still be generated automatically from the structured model.
 
-Human review is targeted and mostly asynchronous. L2 is common; L3 used for material decisions.
+## 3. Per-stage depth
 
-## 3. CRITICAL — High-Impact / Regulated / Strategic Mode
-
-Goal: reduce the probability and consequence of high-impact failure where loss, legal exposure, security impact, safety, strategic lock-in or irreversibility justifies greater analysis.
-
-Typical use:
-- high-value commitments;
-- critical infrastructure/business process;
-- regulated or highly sensitive data;
-- major vendor/cloud/platform lock-in;
-- severe availability/safety/security consequences;
-- difficult or expensive rollback/migration.
-
-Adds stronger evidence triangulation, independent review where justified, deeper threat/risk analysis, explicit residual-risk acceptance, PoC/benchmark requirements, scenario/sensitivity analysis, robust recovery/exit planning and more frequent outcome validation.
-
-L3/L4 decisions are common.
-
-## 4. Mode does not hide risk
-
-A project may start in FAST but individual decisions automatically escalate when Decision Escalation Matrix or Survival Rules require it.
+A project has a default FATHER Depth, but every stage may override it.
 
 Example:
-FAST project + trivial UI library → FAST/L1.
-FAST project + storing sensitive customer data → security controls may require L2/L3 review.
-FAST project + 5-year irreversible vendor contract → L3/L4 regardless of project mode.
 
-## 5. Mode switching
+Project Type: LEARNING_TASK
+Project Depth: FAST
 
-Mode may change during the project.
+Product              MIN
+Business Analysis     MIN
+System Analysis       FAST
+Architecture          FULL
+OSINT / Evidence      FAST
+Security              FULL
+Economics             MIN
+Technical Design      FAST
+Test Design           FULL
+Development           FAST
+DevSecOps             FULL
+Operations            MIN
+Outcome Review        FAST
 
-FAST → STANDARD triggers may include:
-- paying external customers;
-- growing team;
-- SLA/support obligations;
-- persistent sensitive data;
-- significant recurring revenue/cost;
-- architecture complexity or operational incidents.
+This permits a small project to become a focused training exercise without forcing full bureaucracy everywhere.
 
-STANDARD → CRITICAL triggers may include:
-- regulatory classification;
-- major financial exposure;
-- severe security/safety impact;
-- strategic dependency/lock-in;
-- high irreversibility;
-- repeated serious incidents.
+## 4. Learning Override
 
-Mode changes are recorded with WHY and effective baseline version.
+Learning Override temporarily raises selected stage(s) to a requested depth.
 
-## 6. Human Effort Ratio
+Examples:
+- studying architecture → Architecture = FULL;
+- studying DevSecOps → DevSecOps = FULL;
+- studying security → Security/Threat Modeling = FULL;
+- studying testing → Test Design + Test Execution = FULL.
+
+Learning Override records:
+- learning objective;
+- selected stage/domain;
+- requested depth;
+- competencies being practiced;
+- expected learning evidence;
+- time/cost spent;
+- actual lesson/competency update.
+
+Learning Override must never reduce mandatory controls required by decision criticality or Survival Rules.
+
+## 5. Decision Criticality is independent
+
+Every material decision uses the Architecture Decision Escalation Matrix:
+
+L1 — local/reversible
+L2 — peer review
+L3 — targeted mini-board / strong evidence
+L4 — strategic/high-impact human risk acceptance
+
+A MIN project can contain an L4 decision. A FULL project can contain many L1 decisions.
+
+Decision Criticality overrides simplification when risk requires it.
+
+Example:
+
+Project Type = STARTUP
+FATHER Depth = FAST
+
+UI library choice                 → L1
+Database choice                   → L2
+Sensitive personal-data handling  → L3
+Irreversible 5-year vendor lock-in → L4
+
+The project remains FAST; only the dangerous decisions become deeper.
+
+## 6. Learning Factory concept
+
+All course exercises, homework and experiments should be created as projects of type LEARNING_TASK or STARTUP-LAB and processed through FATHER.
+
+This produces not merely completed homework but structured production history:
+
+Learning Task
+→ Goal/Requirement
+→ Analysis
+→ Architecture
+→ Diagram
+→ Test Before Code
+→ Code
+→ Security/DevSecOps
+→ Test Result
+→ Outcome
+→ Lesson
+→ Competency Update.
+
+After many tasks FATHER accumulates training data about:
+- requirement quality;
+- architecture decisions;
+- methods used;
+- estimation accuracy;
+- test quality;
+- coding/rework time;
+- security findings;
+- recurring mistakes;
+- competency growth;
+- which automation actually saves human effort.
+
+## 7. Human Effort Ratio
 
 Primary usability metric:
 Human Effort Ratio = human active decision/review time / total production effort.
 
-Track alongside:
-- clarification questions per project;
-- approval actions per stage;
-- time spent filling forms manually;
-- agent-generated artifact acceptance rate;
-- rework due to missing human context;
-- defects/risks prevented;
-- lead time to working release.
+Track:
+- human minutes per project;
+- clarification questions;
+- approval actions;
+- manual form/document time;
+- AI-generated artifact acceptance/rework;
+- lead time;
+- missed gaps;
+- avoided rework/loss.
 
-The goal is not zero human involvement. The goal is to reserve human attention for decisions where judgment adds material value.
+A depth profile that creates more governance cost than value should be simplified.
 
-## 7. FAST UX rule
+## 8. UX
 
-For solo/startup use, the normal screen should not expose the whole enterprise model by default. Show a concise action queue such as:
+Project creation should expose a small configuration panel:
 
-- 3 questions need your answer;
-- 1 architecture choice needs approval;
-- 1 cost/risk exception needs review;
-- release candidate is ready.
+Project Type: [Learning Task / Startup / Product / ...]
+FATHER Depth: [MIN / FAST / STANDARD / FULL]
+Learning Override: [none / select stages]
+Decision Criticality: automatic per decision, with human override/escalation and recorded WHY.
 
-The detailed graph, evidence, diagrams, tests and documents remain available on demand.
+Normal user view shows only actions requiring attention. The full model remains available graphically and in generated documents.
 
-## 8. Core invariant across all modes
+## 9. Core rule
 
-FAST simplifies presentation and review depth, not causality.
+Project Type tells FATHER what kind of work is being done.
+FATHER Depth tells FATHER how much process/detail to apply.
+Decision Criticality tells FATHER how much risk governance a specific decision needs.
+Learning Override tells FATHER where to intentionally go deeper for training.
 
-Always preserve, proportionate to risk:
-WHAT → WHY → DECISION → TEST → IMPLEMENTATION → RESULT → LESSON.
-
-This allows a solo founder to begin in FAST without creating an undocumented prototype that later cannot mature into STANDARD or CRITICAL governance.
+These are independent axes and must remain independently configurable.
