@@ -34,6 +34,8 @@ Standard Review / Improvement
 
 - [Engineering Constitution v0.1](ENGINEERING_CONSTITUTION_V0_1.md) — неизменяемые базовые принципы инженерного производства FATHER.
 - [Standards Catalog v0.1](STANDARDS_CATALOG_V0_1.md) — реестр внутренних стандартов `STD-*`.
+- [STD-013 DevSecOps & Secure SDLC v0.1](STD-013-DEVSECOPS-SECURE-SDLC_V0_1.md) — сквозная безопасность разработки: GitHub → CI → supply chain → release → operations.
+- [GitHub Security Baseline v0.1](GITHUB_SECURITY_BASELINE_V0_1.md) — чек-лист безопасной организации репозиториев FATHER и дочерних продуктов.
 - [Machine-Readable Standard Model v0.1](MACHINE_READABLE_STANDARD_MODEL_V0_1.md) — формальная модель `StandardDefinition / ControlDefinition / GateDefinition / ComplianceRecord`.
 - [Pattern Library v0.1](PATTERN_LIBRARY_V0_1.md) — переиспользуемые инженерные решения `PAT-*`.
 - [Anti-Pattern Library v0.1](ANTIPATTERN_LIBRARY_V0_1.md) — решения и практики, которые приводят к систематическим потерям `APT-*`.
@@ -72,6 +74,12 @@ Standard Review / Improvement
 10. историю изменений;
 11. ссылку на evidence и результаты эксплуатации.
 
+## Сквозной DevSecOps baseline
+
+Для программных продуктов безопасность начинается при создании репозитория и продолжается после релиза. Целевой pipeline включает quality checks, unit tests, SAST, secret scanning, SCA, dependency/license controls, SBOM, container/IaC scanning, integration/API/DAST security tests и Release Security Gate.
+
+Конкретные инструменты выбираются через Technology Strategy Gate; стандарт фиксирует обязательную capability, а не vendor lock.
+
 ## Исполняемый цикл
 
 ```text
@@ -94,15 +102,17 @@ Outcome / Metrics
 Update Standard
 ```
 
-Первый эталонный стандарт — `STD-006 Security Engineering`. Он уже содержит контроли от требований и классификации данных до threat modeling, CI security checks, инфраструктуры, security acceptance и operational monitoring.
+Первый эталонный стандарт — `STD-006 Security Engineering`. `STD-013 DevSecOps & Secure SDLC` расширяет его до полного производственного контура GitHub/CI/CD/supply chain/release/operations.
 
 ## Следующий шаг
 
 1. Валидировать `STD-006-SECURITY-ENGINEERING_V0_1.json` против `STANDARD_DEFINITION_SCHEMA_V0_1.json` в CI.
-2. Добавить модели Django: `StandardDefinition`, `ControlDefinition`, `StandardProfile`, `GateRun`, `GateCheckResult`, `Finding`, `Waiver`, `ComplianceRecord`.
-3. Реализовать первый автоматический `Security Gate`.
-4. Затем тем же форматом перевести `STD-007 Legal/Compliance`, `STD-008 Economics`, `STD-005 Infrastructure`, `STD-011 Testing`.
+2. Пройти текущий репозиторий по `GITHUB_SECURITY_BASELINE_V0_1.md`.
+3. Добавить/усилить CI jobs: SAST, secret scanning, SCA, container/IaC scanning where applicable.
+4. Добавить модели Django: `StandardDefinition`, `ControlDefinition`, `StandardProfile`, `GateRun`, `GateCheckResult`, `Finding`, `Waiver`, `ComplianceRecord`.
+5. Реализовать первый автоматический `Security Gate`.
+6. Затем тем же форматом перевести `STD-007 Legal/Compliance`, `STD-008 Economics`, `STD-005 Infrastructure`, `STD-011 Testing`.
 
 ## Статус
 
-`BASELINE v0.1 / FIRST EXECUTABLE STANDARD CREATED`
+`BASELINE v0.1 / SECURITY + DEVSECOPS EXECUTABLE LAYER IN DEVELOPMENT`
