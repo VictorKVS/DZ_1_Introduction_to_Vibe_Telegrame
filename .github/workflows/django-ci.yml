@@ -1,0 +1,67 @@
+name: FATHER Django CI
+
+on:
+  push:
+    paths:
+      - "src/**"
+      - "pyproject.toml"
+      - ".github/workflows/django-ci.yml"
+  pull_request:
+    paths:
+      - "src/**"
+      - "pyproject.toml"
+      - ".github/workflows/django-ci.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: father
+          POSTGRES_USER: father
+          POSTGRES_PASSWORD: father-ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U father -d father"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DJANGO_DEBUG: "1"
+      DJANGO_SECRET_KEY: "ci-only-not-a-production-secret"
+      POSTGRES_DB: father
+      POSTGRES_USER: father
+      POSTGRES_PASSWORD: father-ci
+      POSTGRES_HOST: 127.0.0.1
+      POSTGRES_PORT: "5432"
+      PYTHONPATH: src
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip && pip install -e ".[dev]"
+
+      - name: Django system check
+        run: python src/manage.py check
+
+      - name: Verify migrations are current
+        run: python src/manage.py makemigrations --check --dry-run
+
+      - name: Apply migrations
+        run: python src/manage.py migrate --noinput
+
+      - name: Run tests
+        run: pytest -q
+
+      - name: Ruff
+        run: ruff check src tools
